@@ -1,0 +1,8 @@
+*.jpeg
+*.jpg
+*.png
+*.xml
+*.ipynb
+*.swp
+*.pickle
+*.json
