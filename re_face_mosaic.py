@@ -7,8 +7,8 @@ import cv2
 cascade_file = "haarcascade_frontalface_alt.xml"
 face_cascade = cv2.CascadeClassifier(cascade_file)
 
-img = cv2.imread("tanaka.jpg")
-result = cv2.imread("tanaka.jpg")
+img = cv2.imread("face_jpg/naname2_face.jpg")
+result = cv2.imread("face_jpg/naname2_face.jpg")
 
 #読み込んだ画像をグレースケールに変換
 gray = cv2.cvtColor(img,cv2.COLOR_RGB2GRAY)
@@ -16,6 +16,7 @@ gray = cv2.cvtColor(img,cv2.COLOR_RGB2GRAY)
 #分類器で顔を認識する
 face = face_cascade.detectMultiScale(gray,1.3,5)
 
+print(face)
 if 0 < len(face):
 
     print("get face")
@@ -33,12 +34,12 @@ if 0 < len(face):
         #モザイク処理した部分を重ねる
         result[y:y+h,x:x+w] = cut_img
 
+        cv2.imshow("face mosaic",result)
+        cv2.imwrite("mosaic_face/mo_naname2_face.jpg",result)
+        #cv2.waitKey(0)
+        #cv2.destroyAllWindows()
+
+
 else:
 
     print("no face")
-
-
-cv2.imshow("face mosaic",result)
-#cv2.imwrite("output file name",result)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
